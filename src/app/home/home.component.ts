@@ -40,6 +40,7 @@ export class HomeComponent implements OnInit {
     this.tagsService.getAll()
     .subscribe(tags => {
       this.tags = tags;
+      console.log('get all tags' + tags);
       this.tagsLoaded = true;
     });
   }

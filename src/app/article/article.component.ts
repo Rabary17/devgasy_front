@@ -85,6 +85,7 @@ export class ArticleComponent implements OnInit {
   }
 
   addComment() {
+
     this.isSubmitting = true;
     this.commentFormErrors = {};
 
