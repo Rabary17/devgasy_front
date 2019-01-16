@@ -33,6 +33,16 @@
                 class="form-control form-control-lg"
                 type="password" />
             </fieldset>
+            <fieldset class="form-group" *ngIf="authType == 'register'">
+              <select
+                formControlName="role"
+                placeholder="role"
+                multiple="multiple"
+                class="form-control form-control-lg">
+                  <option value="ADMIN">Admin</option>
+                  <option value="USER">User</option>
+                </select>
+            </fieldset>
             <button class="btn btn-lg btn-primary pull-xs-right" [disabled]="!authForm.valid" type="submit">
               {{ title }}
             </button>

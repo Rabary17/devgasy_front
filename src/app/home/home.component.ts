@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ArticleListConfig, TagsService, UserService } from '../core';
-
+import { User} from '../core/models/user.model';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home.component.html',
@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private router: Router,
     private tagsService: TagsService,
-    private userService: UserService
+    private userService: UserService,
   ) {}
 
   isAuthenticated: boolean;
@@ -22,12 +22,13 @@ export class HomeComponent implements OnInit {
   };
   tags: Array<string> = [];
   tagsLoaded = false;
+  currentUser: User;
+  role: Array<string> = [];
 
   ngOnInit() {
     this.userService.isAuthenticated.subscribe(
       (authenticated) => {
         this.isAuthenticated = authenticated;
-
         // set the article list accordingly
         if (authenticated) {
           this.setListTo('feed');
@@ -37,10 +38,22 @@ export class HomeComponent implements OnInit {
       }
     );
 
+    this.userService.currentUser.subscribe(
+      (userData) => {
+        this.currentUser = userData;
+        this.role = userData.role;
+      }
+    );
+      this.role.forEach(res => {
+        if (res.indexOf('ADMIN')) {
+          console.log('Admin Bonjour' + res);
+          this.router.navigateByUrl('/');
+        }
+      });
+
     this.tagsService.getAll()
     .subscribe(tags => {
       this.tags = tags;
-      console.log('get all tags' + tags);
       this.tagsLoaded = true;
     });
   }
