@@ -32,6 +32,12 @@ export class HomeComponent implements OnInit {
         // set the article list accordingly
         if (authenticated) {
           this.setListTo('feed');
+          this.role.forEach(res => {
+            if (res.indexOf('ADMIN')) {
+              console.log('Admin Bonjour' + res);
+              this.router.navigateByUrl('/admin');
+            }
+          });
         } else {
           this.setListTo('all');
         }
@@ -44,12 +50,6 @@ export class HomeComponent implements OnInit {
         this.role = userData.role;
       }
     );
-      this.role.forEach(res => {
-        if (res.indexOf('ADMIN')) {
-          console.log('Admin Bonjour' + res);
-          this.router.navigateByUrl('/');
-        }
-      });
 
     this.tagsService.getAll()
     .subscribe(tags => {

@@ -1,26 +1,29 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { AdminComponent } from './admin/admin.component';
+import { ListuserComponent } from './admin/listuser/listuser.component';
+import { ListarticleComponent } from './admin/listarticle/listarticle.component';
 
 const routes: Routes = [
   {
     path: 'settings',
-    loadChildren: './settings/settings.module#SettingsModule'
+    loadChildren: './settings/settings.module#SettingsModule',
   },
   {
     path: 'profile',
-    loadChildren: './profile/profile.module#ProfileModule'
+    loadChildren: './profile/profile.module#ProfileModule',
   },
   {
     path: 'editor',
-    loadChildren: './editor/editor.module#EditorModule'
+    loadChildren: './editor/editor.module#EditorModule',
   },
   {
     path: 'article',
-    loadChildren: './article/article.module#ArticleModule'
+    loadChildren: './article/article.module#ArticleModule',
   },
   {
     path: 'admin',
-    loadChildren: './admin/admin.module#AdminModule'
+    loadChildren: './admin/admin.module#AdminModule',
   }
 ];
 

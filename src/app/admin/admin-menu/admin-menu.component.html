@@ -1,0 +1,34 @@
+<nav class="navbar navbar-light">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/"></a>
+    <!-- Show this for logged out users -->
+    <ul class="nav navbar-nav pull-xs-right">
+
+      <li class="nav-item">
+        <a class="nav-link"
+        [routerLink]="['/admin/user']"
+        routerLinkActive="active">
+          Utilisateurs
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link"
+        [routerLink]="['/admin/articles']"
+          routerLinkActive="active">
+          Tous les articles
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link"
+        [routerLink]="['/admin/transactions']"
+          routerLinkActive="active">
+          Transactions
+        </a>
+      </li>
+
+    </ul>
+
+  </div>
+</nav>

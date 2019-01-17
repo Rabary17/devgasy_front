@@ -71,6 +71,15 @@ export class UserService {
     return this.currentUserSubject.value;
   }
 
+  getAllUser(): Observable<[User]>  {
+    return this.apiService.get('/alluser')
+    .pipe(map(
+    data => {
+      return data;
+    }
+  ));
+  }
+
   // Update the user on the server (email, pass, etc)
   update(user): Observable<User> {
     return this.apiService

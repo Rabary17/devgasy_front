@@ -11,6 +11,8 @@ import {
 } from './shared';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
+import { AdminModule } from './admin/admin.module';
+import { AdminRoutingModule } from './admin/admin-routing.module';
 
 @NgModule({
   declarations: [AppComponent, FooterComponent, HeaderComponent],
@@ -19,8 +21,10 @@ import { CoreModule } from './core/core.module';
     CoreModule,
     SharedModule,
     HomeModule,
+    AdminModule,
     AuthModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AdminRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
