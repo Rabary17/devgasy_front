@@ -3,6 +3,7 @@ import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { AdminComponent } from './admin.component';
 import { ListuserComponent } from './listuser/listuser.component';
 import { ListarticleComponent } from './listarticle/listarticle.component';
+import { TransactionsComponent } from './transactions/transactions.component';
 
 const adminRoutes: Routes = [
     {
@@ -22,6 +23,11 @@ const adminRoutes: Routes = [
         {
           path: 'articles',
           component: ListarticleComponent,
+          resolve: {}
+        },
+        {
+          path: 'transactions',
+          component: TransactionsComponent,
           resolve: {}
         }
       ]

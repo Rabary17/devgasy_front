@@ -8,6 +8,7 @@ import { ListuserComponent } from './listuser/listuser.component';
 import { SharedModule } from '../shared';
 import { AdminRoutingModule } from './admin-routing.module';
 import { ListarticleComponent } from './listarticle/listarticle.component';
+import { TransactionsComponent } from './transactions/transactions.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { ListarticleComponent } from './listarticle/listarticle.component';
     AdminComponent,
     ListuserComponent,
     AdminMenuComponent,
-    ListarticleComponent
+    ListarticleComponent,
+    TransactionsComponent
   ]
 })
 export class AdminModule { }
