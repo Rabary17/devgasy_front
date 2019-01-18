@@ -1,7 +1,11 @@
 <app-list-errors [errors]="errors"></app-list-errors>
 
 Comment point response
-
+<div *ngIf="ifResponse">
+  <p *ngFor="let response of responses">
+    {{response.body}}
+  </p>
+</div>
 <div class="card-block">
     <button class="btn btn-lg btn-primary pull-xs-right" type="button" (click)="getResponse()">
         Afficher les réponses

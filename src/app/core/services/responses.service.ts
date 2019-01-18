@@ -20,8 +20,8 @@ export class ResponsesService {
 
   getResponseComment(commentId): Observable<Response[]> {
     return this.apiService
-    .post(`/response/${commentId}`, { response: { body: commentId })
-      .pipe(map(data => data.comments));
+    .post(`/response/${commentId}`, { response: { body: commentId }})
+      .pipe(map(data => data.responses.response));
   }
 
   destroy(commentId, articleSlug) {

@@ -16,7 +16,8 @@ import { Errors, UserService, User } from '../core';
     isSubmitting = false;
     authForm: FormGroup;
     credentials: Array<any>;
-
+    responses: Array<any>;
+    ifResponse = false;
     constructor(
       private route: ActivatedRoute,
       private router: Router,
@@ -36,7 +37,8 @@ import { Errors, UserService, User } from '../core';
     getResponse() {
       console.log(this.commentId);
       this.responseService.getResponseComment(this.commentId).subscribe(res => {
-        console.log(res);
+        this.responses = res;
+        this.ifResponse = true;
       });
     }
 
