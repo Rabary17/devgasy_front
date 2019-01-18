@@ -15,8 +15,7 @@ import { Errors, UserService, User } from '../core';
     errors: Errors = {errors: {}};
     isSubmitting = false;
     authForm: FormGroup;
-    credentials: [];
-    response: string;
+    credentials: Array<any>;
 
     constructor(
       private route: ActivatedRoute,
@@ -32,10 +31,13 @@ import { Errors, UserService, User } from '../core';
     }
 
     ngOnInit() {
-        this.route.url.subscribe(data => {
-            // Get the last piece of the URL (it's either 'login' or 'register')
-            this.authType = data[data.length - 1].path;
-        });
+    }
+
+    getResponse() {
+      console.log(this.commentId);
+      this.responseService.getResponseComment(this.commentId).subscribe(res => {
+        console.log(res);
+      });
     }
 
     submitForm() {

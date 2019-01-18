@@ -1,4 +1,15 @@
 <app-list-errors [errors]="errors"></app-list-errors>
+
+Comment point response
+
+<div class="card-block">
+    <button class="btn btn-lg btn-primary pull-xs-right" type="button" (click)="getResponse()">
+        Afficher les réponses
+      </button>
+</div>
+
+
+
 <form [formGroup]="authForm" (ngSubmit)="submitForm()">
   <fieldset [disabled]="isSubmitting">
     <fieldset class="form-group">

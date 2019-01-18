@@ -10,7 +10,7 @@ export class CommentResponseComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    
+
   }
 
 }
