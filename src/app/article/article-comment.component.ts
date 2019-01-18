@@ -2,14 +2,16 @@ import { Component, EventEmitter, Input, Output, OnInit, OnDestroy } from '@angu
 
 import { Comment, User, UserService } from '../core';
 import { Subscription } from 'rxjs';
-
+import { AddResponseComponent } from '../response/add-response.component';
+import { ResponsesService } from '../core/services/responses.service';
 @Component({
   selector: 'app-article-comment',
   templateUrl: './article-comment.component.html'
 })
 export class ArticleCommentComponent implements OnInit, OnDestroy {
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private ResponseService: ResponsesService
   ) {}
 
   private subscription: Subscription;

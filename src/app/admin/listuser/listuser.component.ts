@@ -11,7 +11,6 @@ import { map } from 'rxjs/operators';
 export class ListuserComponent implements OnInit {
   Alluser: [User];
 
-
   constructor(
     private user_service: UserService,
   ) { }

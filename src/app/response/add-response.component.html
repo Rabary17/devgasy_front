@@ -1,0 +1,16 @@
+<app-list-errors [errors]="errors"></app-list-errors>
+<form [formGroup]="authForm" (ngSubmit)="submitForm()">
+  <fieldset [disabled]="isSubmitting">
+    <fieldset class="form-group">
+      <input
+        formControlName="body"
+        placeholder="répondre"
+        class="form-control form-control-lg"
+        type="text-area"
+        />
+    </fieldset>
+    <button class="btn btn-lg btn-primary pull-xs-right" [disabled]="!authForm.valid" type="submit">
+      Envoyer
+    </button>
+  </fieldset>
+</form>

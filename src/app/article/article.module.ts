@@ -7,6 +7,9 @@ import { ArticleResolver } from './article-resolver.service';
 import { MarkdownPipe } from './markdown.pipe';
 import { SharedModule } from '../shared';
 import { ArticleRoutingModule } from './article-routing.module';
+import { AddResponseComponent } from '../response/add-response.component';
+import { ResponseComponent } from '../response/response.component';
+import { CommentResponseComponent } from '../response/comment-response/comment-response.component';
 
 @NgModule({
   imports: [
@@ -16,6 +19,9 @@ import { ArticleRoutingModule } from './article-routing.module';
   declarations: [
     ArticleComponent,
     ArticleCommentComponent,
+    AddResponseComponent,
+    ResponseComponent,
+    CommentResponseComponent,
     MarkdownPipe
   ],
 

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpTokenInterceptor } from './interceptors/http.token.interceptor';
+import { ResponsesService } from './services/responses.service';
 
 import {
   ApiService,
@@ -12,6 +13,7 @@ import {
   ProfilesService,
   TagsService,
   UserService
+
 } from './services';
 
 @NgModule({
@@ -27,7 +29,8 @@ import {
     JwtService,
     ProfilesService,
     TagsService,
-    UserService
+    UserService,
+    ResponsesService
   ],
   declarations: []
 })

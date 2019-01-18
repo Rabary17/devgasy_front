@@ -12,7 +12,7 @@ const adminRoutes: Routes = [
       children: [
         {
           path: '',
-          redirectTo: '/admin',
+          redirectTo: '/user',
           pathMatch: 'full'
         },
         {

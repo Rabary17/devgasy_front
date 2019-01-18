@@ -1,7 +1,7 @@
 <div class="card">
   <div class="card-block">
     <p class="card-text">
-      {{ comment.body }}
+      {{ comment.body }} 
     </p>
   </div>
   <div class="card-footer">
@@ -18,5 +18,16 @@
     <span class="mod-options" [hidden]="!canModify">
       <i class="ion-trash-a" (click)="deleteClicked()"></i>
     </span>
+  </div>
+  <div class="card-block">
+      <p class="card-text">
+        {{ comment.response }} 
+      </p>
+  </div>
+
+
+  <!-- répondre -->
+  <div class="card-footer">
+    <app-add-response [commentId]="comment.id"></app-add-response>
   </div>
 </div>
