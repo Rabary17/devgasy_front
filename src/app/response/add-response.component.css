@@ -1,0 +1,17 @@
+.button-reply {
+    font-size: 14px;
+    padding: 5px;
+    font-weight: bold;
+    background-color: #ff7d00;
+    border-color: transparent;
+  }
+  
+  .button-show-response {
+    font-size: 14px;
+    padding: 5px;
+    font-weight: bold;
+    background-color: #4b0477;
+    border-color: transparent;
+  }
+  
+  

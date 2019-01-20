@@ -1,30 +1,55 @@
 <app-list-errors [errors]="errors"></app-list-errors>
+<div *ngIf="ifResponse && isShown">
+  <div *ngFor="let response of responses">
+    <div class="card">
+        <div class="card-block">
+          <p class="card-text">
+            {{ response.body }} 
+          </p>
+        </div>
+    </div>
 
-Comment point response
-<div *ngIf="ifResponse">
-  <p *ngFor="let response of responses">
-    {{response.body}}
-  </p>
+    <div class="card-footer">
+        <a class="comment-author" [routerLink]="['/profile', response.author.username]">
+          <img [src]="response.author.image" class="comment-author-img" />
+        </a>
+        &nbsp;
+        <a class="comment-author" [routerLink]="['/profile', response.author.username]">
+          {{ response.author.username }}
+        </a>
+        <span class="date-posted">
+          {{ response.createdAt | date: 'longDate' }}
+        </span>
+        <span class="mod-options" [hidden]="!canModify">
+          <i class="ion-trash-a" (click)="deleteClicked()"></i>
+        </span>
+    </div>
+  </div>
+
 </div>
-<div class="card-block">
-    <button class="btn btn-lg btn-primary pull-xs-right" type="button" (click)="getResponse()">
-        Afficher les réponses
-      </button>
+
+
+<div class="card-block" *ngIf="commentResp > 0">
+    <button *ngIf="!isShown" class="btn btn-lg btn-primary pull-xs-right button-show-response" type="button" (click)="getResponse()">
+        <span>Afficher les {{commentResp}} réponses</span>
+    </button>
+    <button  *ngIf="isShown" class="btn btn-lg btn-primary pull-xs-right button-show-response" type="button" (click)="closeComment()">
+          <span>Masquer les réponses</span>
+    </button>
 </div>
-
-
 
 <form [formGroup]="authForm" (ngSubmit)="submitForm()">
   <fieldset [disabled]="isSubmitting">
     <fieldset class="form-group">
-      <input
+      <textarea
         formControlName="body"
-        placeholder="répondre"
+        placeholder="Répondre à ce commentaire"
         class="form-control form-control-lg"
         type="text-area"
-        />
+        style="font-size: 14px;"
+        ></textarea>
     </fieldset>
-    <button class="btn btn-lg btn-primary pull-xs-right" [disabled]="!authForm.valid" type="submit">
+    <button class="btn btn-lg btn-primary pull-xs-right button-reply" [disabled]="!authForm.valid" type="submit">
       Envoyer
     </button>
   </fieldset>
