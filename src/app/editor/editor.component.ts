@@ -14,6 +14,8 @@ export class EditorComponent implements OnInit {
   tagField = new FormControl();
   errors: Object = {};
   isSubmitting = false;
+  authType: string;
+  title: string;
 
   constructor(
     private articlesService: ArticlesService,
@@ -25,7 +27,10 @@ export class EditorComponent implements OnInit {
     this.articleForm = this.fb.group({
       title: '',
       description: '',
-      body: ''
+      body: '',
+      categorie: '',
+      language: '',
+      framework: ''
     });
 
     // Initialized tagList as empty array
@@ -42,6 +47,14 @@ export class EditorComponent implements OnInit {
         this.article = data.article;
         this.articleForm.patchValue(data.article);
       }
+    });
+
+    this.route.url.subscribe(data => {
+      // Get the last piece of the URL (it's either 'login' or 'register')
+      this.authType = data[data.length - 1].path;
+      console.log(this.authType);
+      // Set a title for the page accordingly
+      this.title = (this.authType === 'bonne-pratique') ? 'Bonne pratique' : 'Sujet';
     });
   }
 
@@ -62,7 +75,12 @@ export class EditorComponent implements OnInit {
 
   submitForm() {
     this.isSubmitting = true;
-
+      // bonne pratique ou sujet
+      if (this.authType === 'bonne-pratique') {
+        Object.assign(this.articleForm.value, {'categorie': 'bonne-pratique'});
+      } else if (this.authType === 'sujet') {
+        Object.assign(this.articleForm.value, {'categorie': 'sujet'});
+      }
     // update the model
     this.updateArticle(this.articleForm.value);
 

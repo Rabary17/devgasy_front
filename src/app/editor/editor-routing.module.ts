@@ -15,9 +15,19 @@ const routes: Routes = [
     path: ':slug',
     component: EditorComponent,
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'bonne-pratique',
+    component: EditorComponent,
+    canActivate: [AuthGuard],
     resolve: {
       article: EditableArticleResolver
     }
+  },
+  {
+    path: 'sujet',
+    component: EditorComponent,
+    canActivate: [AuthGuard],
   }
 ];
 

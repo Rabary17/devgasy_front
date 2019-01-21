@@ -3,6 +3,9 @@ import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { AdminComponent } from './admin/admin.component';
 import { ListuserComponent } from './admin/listuser/listuser.component';
 import { ListarticleComponent } from './admin/listarticle/listarticle.component';
+import { EditorComponent } from './editor/editor.component';
+import { AuthGuard } from '../app/core';
+import { EditableArticleResolver } from './editor/editable-article-resolver.service';
 
 const routes: Routes = [
   {

@@ -9,6 +9,31 @@
           <fieldset [disabled]="isSubmitting">
 
             <fieldset class="form-group">
+              <select class="form-control form-control-lg"
+                formControlName="language">
+                <option value="php">php</option>
+                <option value="javascript">javascript</option>
+                <option value="java">java</option>
+                <option value="python">python</option>
+                <option value="git">git</option>
+                <option value="web-serveur">Serveur web</option>
+                <option value="database">Base de données</option>
+                </select>
+            </fieldset>
+
+            <fieldset class="form-group">
+              <select class="form-control form-control-lg"
+                formControlName="framework">
+                <option value="Symfony">Symfony</option>
+                <option value="Laravel">Laravel</option>
+                <option value="Angular">Angular</option>
+                <option value="cakePHP">cakePHP</option>
+                <option value="Django">Django</option>
+                <option value="NodeJs">NodeJs</option>
+                </select>
+            </fieldset>
+
+            <fieldset class="form-group">
               <input class="form-control form-control-lg"
                 formControlName="title"
                 type="text"
@@ -33,7 +58,7 @@
             <fieldset class="form-group">
               <input class="form-control"
                 type="text"
-                placeholder="Enter tags press Enter to add tag"
+                placeholder="Ex: html, php, angular6, mongodb, ... Appuiez sur entrer pour ajouter"
                 [formControl]="tagField"
                 (keyup.enter)="addTag()" />
 
