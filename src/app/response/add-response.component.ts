@@ -17,6 +17,7 @@ import { Errors, UserService, User } from '../core';
     errors: Errors = {errors: {}};
     isSubmitting = false;
     authForm: FormGroup;
+    responseControl = new FormControl();
     credentials: Array<any>;
     responses: Array<any>;
     ifResponse = false;
@@ -60,7 +61,9 @@ import { Errors, UserService, User } from '../core';
       .subscribe(
         data => {
           // this.router.navigateByUrl('localhost:4200/article/' + this.authType);
-          return data;
+          this.responses.unshift(data);
+          this.responseControl.reset('');
+          this.isSubmitting = false;
         } ,
         err => {
           this.errors = err;

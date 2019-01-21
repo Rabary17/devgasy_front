@@ -1,56 +1,60 @@
-<app-list-errors [errors]="errors"></app-list-errors>
-<div *ngIf="ifResponse && isShown">
-  <div *ngFor="let response of responses">
-    <div class="card">
-        <div class="card-block">
-          <p class="card-text">
-            {{ response.body }} 
-          </p>
+<div *appShowAuthed="false">
+  <a [routerLink]="['/login']">Se connecter</a> ou <a [routerLink]="['/register']">s'enregistrer</a> pour voir les réponses.
+</div>
+
+<div *appShowAuthed="true">
+  <app-list-errors [errors]="errors"></app-list-errors>
+  <div *ngIf="ifResponse && isShown">
+    <div *ngFor="let response of responses">
+      <div class="card card-response">
+          <div class="card-block" style="padding-bottom:5px;">
+            <p class="card-text">
+              {{ response.body }} 
+            </p>
+          </div>
+          <div class="card-footer card-footer-response">
+            <a class="comment-author" [routerLink]="['/profile', response.author.username]">
+              <img [src]="response.author.image" class="comment-author-img" />
+            </a>
+            &nbsp;
+            <a class="comment-author" [routerLink]="['/profile', response.author.username]">
+              {{ response.author.username }}
+            </a>
+            <span class="date-posted">
+              {{ response.createdAt | date: 'longDate' }}
+            </span>
+            <span class="mod-options" [hidden]="!canModify">
+              <i class="ion-trash-a" (click)="deleteClicked()"></i>
+            </span>
         </div>
+      </div>
     </div>
 
-    <div class="card-footer">
-        <a class="comment-author" [routerLink]="['/profile', response.author.username]">
-          <img [src]="response.author.image" class="comment-author-img" />
-        </a>
-        &nbsp;
-        <a class="comment-author" [routerLink]="['/profile', response.author.username]">
-          {{ response.author.username }}
-        </a>
-        <span class="date-posted">
-          {{ response.createdAt | date: 'longDate' }}
-        </span>
-        <span class="mod-options" [hidden]="!canModify">
-          <i class="ion-trash-a" (click)="deleteClicked()"></i>
-        </span>
-    </div>
+    <form [formGroup]="authForm" (ngSubmit)="submitForm()">
+      <fieldset [disabled]="isSubmitting">
+        <fieldset class="form-group">
+          <textarea
+            formControlName="body"
+            placeholder="Répondre à ce commentaire"
+            class="form-control form-control-lg"
+            type="text-area"
+            style="font-size: 14px;"
+            ></textarea>
+        </fieldset>
+        <button class="btn btn-lg btn-primary pull-xs-right button-reply" [disabled]="!authForm.valid" type="submit">
+          Répondre
+        </button>
+      </fieldset>
+    </form>
+
   </div>
 
+  <div class="card-block" *ngIf="commentResp > 0">
+      <button *ngIf="!isShown" class="btn btn-lg btn-primary pull-xs-right button-show-response" type="button" (click)="getResponse()">
+          <span>Afficher les {{commentResp}} réponses</span>
+      </button>
+      <button  *ngIf="isShown" class="btn btn-lg btn-primary pull-xs-right button-show-response" type="button" (click)="closeComment()">
+            <span>Masquer les réponses</span>
+      </button>
+  </div>
 </div>
-
-
-<div class="card-block" *ngIf="commentResp > 0">
-    <button *ngIf="!isShown" class="btn btn-lg btn-primary pull-xs-right button-show-response" type="button" (click)="getResponse()">
-        <span>Afficher les {{commentResp}} réponses</span>
-    </button>
-    <button  *ngIf="isShown" class="btn btn-lg btn-primary pull-xs-right button-show-response" type="button" (click)="closeComment()">
-          <span>Masquer les réponses</span>
-    </button>
-</div>
-
-<form [formGroup]="authForm" (ngSubmit)="submitForm()">
-  <fieldset [disabled]="isSubmitting">
-    <fieldset class="form-group">
-      <textarea
-        formControlName="body"
-        placeholder="Répondre à ce commentaire"
-        class="form-control form-control-lg"
-        type="text-area"
-        style="font-size: 14px;"
-        ></textarea>
-    </fieldset>
-    <button class="btn btn-lg btn-primary pull-xs-right button-reply" [disabled]="!authForm.valid" type="submit">
-      Envoyer
-    </button>
-  </fieldset>
-</form>

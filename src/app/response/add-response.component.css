@@ -14,4 +14,14 @@
     border-color: transparent;
   }
   
-  
+  .card-response{
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+  }
+
+  .card-footer-response{
+    text-align: right;
+    border-top: none !important;
+    padding: 0;
+  }

@@ -2,8 +2,8 @@
 
   <div class="banner" *appShowAuthed="false">
     <div class="container">
-      <h1 class="logo-font">conduit</h1>
-      <p>A place to share your <i>Angular 2</i> knowledge.</p>
+      <h1 class="logo-font">MadaDev</h1>
+      <p>Un endroit pour s'entraider entre dev en partageant vos connaissances sur <i>les languages de programmation, les architectures, les frameworks, les trucs et astuces.</i></p>
     </div>
   </div>
 
@@ -17,14 +17,14 @@
               <a class="nav-link"
                  [ngClass]="{'active': listConfig.type === 'feed'}"
                  (click)="setListTo('feed')">
-                 Your Feed
+                 Vos enregistrements
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link"
                  [ngClass]="{'active': listConfig.type === 'all' && !listConfig.filters.tag}"
                  (click)="setListTo('all')">
-                 Global Feed
+                 Tous les articles
               </a>
             </li>
             <li class="nav-item" [hidden]="!listConfig.filters.tag">
@@ -40,7 +40,7 @@
 
       <div class="col-md-3">
         <div class="sidebar">
-          <p>Popular Tags</p>
+          <p>Les plus utilisés</p>
 
           <div class="tag-list">
             <a *ngFor="let tag of tags"
@@ -51,11 +51,11 @@
           </div>
 
           <div [hidden]="tagsLoaded">
-            Loading tags...
+            Chargement...
           </div>
 
           <div [hidden]="!tagsLoaded || tags.length > 0">
-            No tags are here... yet.
+            Il n'y a pas encore de tag ...
           </div>
         </div>
       </div>
