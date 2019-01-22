@@ -1,20 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { ArticleListConfig, TagsService, UserService } from '../core';
 import { User} from '../core/models/user.model';
+import { ApiService } from '../core/services/api.service';
+import { Article } from '../core/models/article.model';
+
 @Component({
   selector: 'app-home-page',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  article: Array<Article>;
+  searchForm: FormGroup;
   constructor(
     private router: Router,
+    private fb: FormBuilder,
     private tagsService: TagsService,
     private userService: UserService,
-  ) {}
+    private http: ApiService
+  ) {
+    this.searchForm = this.fb.group({
+      keyword: '',
+    });
+  }
 
+  searchOn = false;
   isAuthenticated: boolean;
   listConfig: ArticleListConfig = {
     type: 'all',
@@ -56,6 +68,22 @@ export class HomeComponent implements OnInit {
       this.tags = tags;
       this.tagsLoaded = true;
     });
+  }
+
+  search() {
+    console.log(this.searchForm.value.keyword);
+    if (this.searchForm.value.keyword < 1) {
+      this.searchOn = false;
+    }
+    if (this.searchForm.value.keyword.length > 3) {
+      this.searchOn = true;
+      // this.searchForm.value.keyword = 'a';
+
+      return this.http.get('/articles/search/' + this.searchForm.value.keyword, this.searchForm.value.keyword).subscribe(
+        res =>  {
+            this.article = res.article;
+        });
+    }
   }
 
   setListTo(type: string = '', filters: Object = {}) {

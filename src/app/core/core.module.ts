@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpTokenInterceptor } from './interceptors/http.token.interceptor';
 import { ResponsesService } from './services/responses.service';
+import { SearchService } from './services/search.service';
 
 import {
   ApiService,
@@ -12,7 +13,7 @@ import {
   JwtService,
   ProfilesService,
   TagsService,
-  UserService
+  UserService,
 
 } from './services';
 
@@ -30,7 +31,8 @@ import {
     ProfilesService,
     TagsService,
     UserService,
-    ResponsesService
+    ResponsesService,
+    SearchService
   ],
   declarations: []
 })

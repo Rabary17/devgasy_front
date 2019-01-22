@@ -12,7 +12,7 @@ import { HomeRoutingModule } from './home-routing.module';
     HomeRoutingModule
   ],
   declarations: [
-    HomeComponent
+    HomeComponent,
   ],
   providers: [
     HomeAuthResolver

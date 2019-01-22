@@ -1,29 +1,35 @@
-<app-article-preview
-  *ngFor="let article of results"
-  [article]="article">
-</app-article-preview>
+<div>
+  <app-article-preview
+    [hidden]="searchOn"
+    *ngFor="let article of results"
+    [article]="article">
+  </app-article-preview>
+  <app-article-result [hidden]="!searchOn" [searchResult]="article">
 
-<div class="app-article-preview"
-  [hidden]="!loading">
-  Chargement des articles...
+  </app-article-result>
+
+  <div class="app-article-preview"
+    [hidden]="!loading">
+    Chargement des articles...
+  </div>
+
+  <div class="app-article-preview"
+    [hidden]="loading || results.length">
+    Vous n'avez pas encore d'article.
+  </div>
+
+  <nav [hidden]="loading || totalPages.length <= 1">
+    <ul class="pagination">
+
+      <li class="page-item"
+        [ngClass]="{'active': pageNumber === currentPage}"
+        *ngFor="let pageNumber of totalPages"
+        (click)="setPageTo(pageNumber)">
+
+        <a class="page-link" >{{ pageNumber }}</a>
+
+      </li>
+
+    </ul>
+  </nav>
 </div>
-
-<div class="app-article-preview"
-  [hidden]="loading || results.length">
-  Vous n'avez pas encore d'article.
-</div>
-
-<nav [hidden]="loading || totalPages.length <= 1">
-  <ul class="pagination">
-
-    <li class="page-item"
-      [ngClass]="{'active': pageNumber === currentPage}"
-      *ngFor="let pageNumber of totalPages"
-      (click)="setPageTo(pageNumber)">
-
-      <a class="page-link" >{{ pageNumber }}</a>
-
-    </li>
-
-  </ul>
-</nav>

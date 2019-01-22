@@ -16,7 +16,7 @@ export class EditorComponent implements OnInit {
   isSubmitting = false;
   authType: string;
   title: string;
-
+  subtitle: string;
   constructor(
     private articlesService: ArticlesService,
     private route: ActivatedRoute,
@@ -55,6 +55,9 @@ export class EditorComponent implements OnInit {
       console.log(this.authType);
       // Set a title for the page accordingly
       this.title = (this.authType === 'bonne-pratique') ? 'Bonne pratique' : 'Sujet';
+      this.subtitle = (this.authType === 'bonne-pratique') ? 'En tant que professionnels du domaine, ' +
+      'vous aimerez partager vos experiences avec les autres pour les faire monter en compétences' :
+      'Partagez aussi vos pire cauchemar pour que les autres puissent vous aider, car les devs ont tous les mêmes soucis';
     });
   }
 

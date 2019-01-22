@@ -11,6 +11,8 @@ export class ArticleListComponent {
     private articlesService: ArticlesService
   ) {}
 
+  @Input() searchResult;
+  @Input() searchOn;
   @Input() limit: number;
   @Input()
   set config(config: ArticleListConfig) {
@@ -20,7 +22,6 @@ export class ArticleListComponent {
       this.runQuery();
     }
   }
-
   query: ArticleListConfig;
   results: Article[];
   loading = false;
