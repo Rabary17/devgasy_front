@@ -4,7 +4,7 @@
     *ngFor="let article of results"
     [article]="article">
   </app-article-preview>
-  <app-article-result [hidden]="!searchOn" [searchResult]="article">
+  <app-article-result [hidden]="!searchOn" [article]="searchResult">
 
   </app-article-result>
 

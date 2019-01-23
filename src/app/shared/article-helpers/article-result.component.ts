@@ -6,8 +6,6 @@ import { Article } from '../../core';
   selector: 'app-article-result',
   templateUrl: './article-result.component.html'
 })
-export class SearchResultComponent {
-@Input() searchResult;
-
-
+export class ArticleResultComponent {
+@Input() article;
 }
