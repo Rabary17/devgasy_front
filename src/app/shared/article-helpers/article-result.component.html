@@ -1,5 +1,3 @@
-this is article result !!
--------------------------
-<div *ngFor="let item of article">
-    {{item.title}}
-</div>
+<app-article-preview [article]="article" *ngFor="let article of article">
+
+</app-article-preview>
