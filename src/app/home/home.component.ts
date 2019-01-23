@@ -36,6 +36,7 @@ export class HomeComponent implements OnInit {
   tagsLoaded = false;
   currentUser: User;
   role: Array<string> = [];
+  keyword = '';
 
   ngOnInit() {
     this.userService.isAuthenticated.subscribe(
@@ -75,7 +76,8 @@ export class HomeComponent implements OnInit {
     if (this.searchForm.value.keyword < 1) {
       this.searchOn = false;
     }
-    if (this.searchForm.value.keyword.length > 3) {
+    if (this.searchForm.value.keyword.length > 2) {
+      this.keyword = this.searchForm.value.keyword;
       this.searchOn = true;
       // this.searchForm.value.keyword = 'a';
 
@@ -95,5 +97,6 @@ export class HomeComponent implements OnInit {
 
     // Otherwise, set the list object
     this.listConfig = {type: type, filters: filters};
+    this.searchOn = false;
   }
 }

@@ -11,6 +11,7 @@ export class ArticleListComponent {
     private articlesService: ArticlesService
   ) {}
 
+  @Input() listConfig;
   @Input() searchResult;
   @Input() searchOn;
   @Input() limit: number;
