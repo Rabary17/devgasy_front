@@ -49,9 +49,9 @@
 
   </div>
 
-  <div class="card-block" *ngIf="commentResp > 0">
+  <div class="card-block" *ngIf="commentResp > 0" style="padding: 0">
       <button *ngIf="!isShown" class="btn btn-lg btn-primary pull-xs-right button-show-response" type="button" (click)="getResponse()">
-          <span>Afficher les {{commentResp}} réponses</span>
+          <span><i class="ion-chevron-up"></i>Afficher les {{commentResp}} réponses</span>
       </button>
       <button  *ngIf="isShown" class="btn btn-lg btn-primary pull-xs-right button-show-response" type="button" (click)="closeComment()">
             <span>Masquer les réponses</span>

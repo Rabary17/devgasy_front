@@ -5,4 +5,5 @@ export interface Comment {
   body: string;
   createdAt: string;
   author: Profile;
+  utile: Array<string>;
 }

@@ -4,7 +4,7 @@
       {{ comment.body }} 
     </p>
   </div>
-  <div class="card-footer">
+  <div class="card-footer" style="border-top:none!important;background-color: transparent;">
     <a class="comment-author" [routerLink]="['/profile', comment.author.username]">
       <img [src]="comment.author.image" class="comment-author-img" />
     </a>
@@ -18,10 +18,13 @@
     <span class="mod-options" [hidden]="!canModify">
       <i class="ion-trash-a" (click)="deleteClicked()"></i>
     </span>
+    <span class="mod-options">
+        <i class="fa fa-thumbs-o-up" aria-hidden="true" (click)="wasUseful(comment)" >{{comment.utile.length}}</i>
+      </span>
   </div>
 
   <!-- répondre -->
-  <div class="card-footer">
+  <div class="card-footer" style="border-top:none!important;background-color: transparent;">
     <app-add-response [commentId]="comment.id" [commentResp]="comment.resp"></app-add-response>
   </div>
 </div>

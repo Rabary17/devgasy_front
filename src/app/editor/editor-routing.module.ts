@@ -28,6 +28,9 @@ const routes: Routes = [
     path: 'sujet',
     component: EditorComponent,
     canActivate: [AuthGuard],
+    resolve: {
+      article: EditableArticleResolver
+    }
   }
 ];
 

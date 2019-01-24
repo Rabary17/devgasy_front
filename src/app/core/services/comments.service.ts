@@ -30,4 +30,20 @@ export class CommentsService {
            .delete(`/articles/${articleSlug}/comments/${commentId}`);
   }
 
+  vote(commentId) {
+    return this.apiService
+    .get(
+      `/articles/vote/comments/${commentId}`,
+      commentId
+    ).pipe(map(data => data.comment));
+  }
+
+  unvote(commentId) {
+    return this.apiService
+    .get(
+      `/articles/unvote/comments/${commentId}`,
+      commentId
+    ).pipe(map(data => data.comment));
+  }
+
 }

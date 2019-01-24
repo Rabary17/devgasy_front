@@ -9,9 +9,11 @@
   .button-show-response {
     font-size: 14px;
     padding: 5px;
-    font-weight: bold;
-    background-color: #4b0477;
+    font-weight: normal;
+    background-color: transparent;
     border-color: transparent;
+    width: 100%;
+    color: #cbcbcb;
   }
   
   .card-response{
