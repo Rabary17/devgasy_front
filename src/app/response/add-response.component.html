@@ -46,7 +46,15 @@
         </button>
       </fieldset>
     </form>
+  </div>
 
+  <div *ngIf="commentResp === 0">
+    <button *ngIf="!isShown" class="btn btn-lg btn-primary pull-xs-right button-show-response" type="button" (click)="getResponse()">
+      <span><i class="ion-chevron-up"></i>répondre</span>
+    </button>
+    <button  *ngIf="isShown" class="btn btn-lg btn-primary pull-xs-right button-show-response" type="button" (click)="closeComment()">
+          <span>Annuler</span>
+    </button>
   </div>
 
   <div class="card-block" *ngIf="commentResp > 0" style="padding: 0">

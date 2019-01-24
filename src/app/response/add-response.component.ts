@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ResponsesService } from '../core/services/responses.service';
 
 import { Errors, UserService, User } from '../core';
+import { Response } from '../core/models/response.model';
+import { Comment } from '../core/models/comment.model';
 
 @Component({
     selector: 'app-add-response',
@@ -19,7 +21,7 @@ import { Errors, UserService, User } from '../core';
     authForm: FormGroup;
     responseControl = new FormControl();
     credentials: Array<any>;
-    responses: Array<any>;
+    responses: Response[];
     ifResponse = false;
     isShown = false;
     constructor(
@@ -60,9 +62,10 @@ import { Errors, UserService, User } from '../core';
       .add(wc)
       .subscribe(
         data => {
+          // console.log(data);
           // this.router.navigateByUrl('localhost:4200/article/' + this.authType);
           this.responses.unshift(data);
-          this.responseControl.reset('');
+          this.authForm.reset('');
           this.isSubmitting = false;
         } ,
         err => {

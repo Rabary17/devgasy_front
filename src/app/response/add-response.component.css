@@ -1,9 +1,10 @@
 .button-reply {
-    font-size: 14px;
-    padding: 5px;
-    font-weight: bold;
-    background-color: #ff7d00;
-    border-color: transparent;
+  font-size: 14px;
+  padding: 5px;
+  font-weight: normal;
+  background-color: transparent;
+  border-color: #d2d2d2;
+  color: #d2d2d2;
   }
   
   .button-show-response {
@@ -20,10 +21,13 @@
     background-color: transparent;
     border: none;
     font-size: 16px;
+    padding-left: 10%;
   }
 
   .card-footer-response{
     text-align: right;
     border-top: none !important;
     padding: 0;
+    background-color: transparent;
+    border-bottom: 1px solid #eee;
   }
