@@ -85,6 +85,14 @@
         </a>
       </li>
 
+      <li class="nav-item" *ngIf="ifAdmin" (click)="seDeconnecter()">
+          <a class="nav-link"
+            routerLink="/admin"
+            routerLinkActive="active">
+            <i class="ion-gear-a"></i>&nbsp;Se déconnecter
+          </a>
+      </li>
+
     </ul>
 
   </div>

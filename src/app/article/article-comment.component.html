@@ -1,17 +1,23 @@
 <div class="container-fluid">
     <div class="row">
- <div class="col-xs-4 col-md-push-2">
-      <a class="comment-author" [routerLink]="['/profile', comment.author.username]">
-        <img [src]="comment.author.image" class="comment-author-img" />
-      </a>
-      &nbsp;
-      <a class="comment-author" [routerLink]="['/profile', comment.author.username]">
-        {{ comment.author.username }}
-      </a>
-      <span class="date-posted">
-        {{ comment.createdAt | date: 'longDate' }}
-      </span>
-    </div>
+ <div class="col-xs-4 col-md-push-2" style="text-align: center;">
+    <div class="card" style="border:none">
+        <div class="card-block">
+          <a class="comment-author" [routerLink]="['/profile', comment.author.username]">
+            <img [src]="comment.author.image" class="response-author-img" />
+          </a>
+        </div>
+
+          &nbsp;
+          <a class="comment-author" [routerLink]="['/profile', comment.author.username]">
+            {{ comment.author.username }}
+          </a>
+        <hr>
+          <span class="date-posted">
+            {{ comment.createdAt | date: 'longDate' }}
+          </span>
+      </div>
+  </div>
 
   <div class="col-xs-8 col-md-pull-10">
     <div class="card">
@@ -20,7 +26,7 @@
           {{ comment.body }} 
         </p>
       </div>
-      <div class="card-footer" style="border-top:none!important;background-color: transparent;">
+      <div class="card-footer" style="border-top:none!important;background-color: transparent;padding-top:0;padding-bottom:0;border-bottom: 1px solid #eee;">
         <span class="mod-options" [hidden]="!canModify">
           <i class="ion-trash-a" (click)="deleteClicked()"></i>
         </span>

@@ -1,5 +1,5 @@
 <div *appShowAuthed="false">
-  <a [routerLink]="['/login']">Se connecter</a> ou <a [routerLink]="['/register']">s'enregistrer</a> pour voir les réponses.
+  <a [routerLink]="['/login']">Voir les réponses.</a>
 </div>
 
 <div *appShowAuthed="true">
@@ -12,7 +12,7 @@
               {{ response.body }} 
             </p>
           </div>
-          <div class="card-footer card-footer-response">
+          <div class="card-footer card-footer-response" style="padding-bottom:5px;">
             <a class="comment-author" [routerLink]="['/profile', response.author.username]">
               <img [src]="response.author.image" class="comment-author-img" />
             </a>
@@ -33,6 +33,7 @@
     <form [formGroup]="authForm" (ngSubmit)="submitForm()">
       <fieldset [disabled]="isSubmitting">
         <fieldset class="form-group">
+            <span class="mod-options"><i style="font-size: 12px">En commentant, vous aidez votre prochain</i></span>
           <textarea
             formControlName="body"
             placeholder="Répondre à ce commentaire"
