@@ -20,7 +20,8 @@ export class ArticleCommentComponent implements OnInit, OnDestroy {
 
   @Input() comment: Comment;
   @Output() deleteComment = new EventEmitter<boolean>();
-  @Output() liked;
+  avoté = new EventEmitter<boolean>();
+
 
   canModify: boolean;
   userId: string;
@@ -55,30 +56,39 @@ export class ArticleCommentComponent implements OnInit, OnDestroy {
   }
 
   wasUseful(comment) {
-    this.permute(this.liked);
     let avoté = false;
+    console.log('conteneur iduser' + comment.utile);
+
     Promise.resolve(
-    comment.utile.map(res => {
-      if (res === this.userId) {
-        return avoté = true;
-      } else { return avoté = false; }
-    })).then(resolve => {
-      if (avoté) {
-        console.log('supprimer vote');
-        return this.commentService.unvote(comment.id).subscribe(
-          res => {
-            console.log(res);
-          }
-        );
-      } else if (!avoté) {
-        console.log('ajouter vote');
-        return this.commentService.vote(comment.id).subscribe(
-          res => {
-            console.log(res);
-          }
-        );
-      }
-    });
+
+      comment.utile.map(res => {
+        if (res === this.userId) {
+          return avoté = true;
+        } else {
+          return avoté = false;
+        }
+
+      })).then(resolve => {
+        if (avoté) {
+          return this.commentService.unvote(comment.id).subscribe(
+            res => {
+              this.comment.utile.length = res.utile.length;
+              this.comment.utile.filter(user => {
+                return user !== this.userId;
+              });
+            }
+          );
+        } else if (!avoté) {
+          return this.commentService.vote(comment.id).subscribe(
+            res => {
+              console.log('res');
+              // si userId dedans
+              this.comment.utile.push(this.userId);
+              this.comment.utile.length = res.utile.length;
+            }
+          );
+        }
+      });
   }
 
   deleteClicked() {

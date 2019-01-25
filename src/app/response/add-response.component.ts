@@ -61,10 +61,10 @@ import { Comment } from '../core/models/comment.model';
       this.responseService
       .add(wc)
       .subscribe(
-        data => {
+        res => {
           // console.log(data);
           // this.router.navigateByUrl('localhost:4200/article/' + this.authType);
-          this.responses.unshift(data);
+          this.responses.unshift(Object.assign(res));
           this.authForm.reset('');
           this.isSubmitting = false;
         } ,
