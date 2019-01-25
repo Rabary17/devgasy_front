@@ -7,7 +7,8 @@ import { ResponsesService } from '../core/services/responses.service';
 import { CommentsService } from '../core/services/comments.service';
 @Component({
   selector: 'app-article-comment',
-  templateUrl: './article-comment.component.html'
+  templateUrl: './article-comment.component.html',
+  styleUrls: ['./article-comment.component.css']
 })
 export class ArticleCommentComponent implements OnInit, OnDestroy {
   constructor(
@@ -25,6 +26,7 @@ export class ArticleCommentComponent implements OnInit, OnDestroy {
 
   canModify: boolean;
   userId: string;
+  tagAvotee: boolean;
 
   ngOnInit() {
     // Load the current user's data
@@ -34,11 +36,9 @@ export class ArticleCommentComponent implements OnInit, OnDestroy {
         this.userId = userData.id;
         if (this.comment.utile) {
           if (this.comment.utile.indexOf(userData.id) === -1) {
-              console.log('ce fils de pute a pas encore voté pour :' + this.comment.body);
-              console.log(userData.id);
+            Object.assign(this.comment, {tagAvotee: false});
           } else {
-            console.log('ce batard de sa mère a déja voté pour :' + this.comment.body);
-              console.log(userData.id);
+            Object.assign(this.comment, {tagAvotee: true});
           }
         }
       }
@@ -52,6 +52,7 @@ export class ArticleCommentComponent implements OnInit, OnDestroy {
   }
 
   permute(status) {
+    console.log(!status);
     return !status;
   }
 
