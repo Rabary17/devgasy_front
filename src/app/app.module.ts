@@ -7,6 +7,8 @@ import { HomeModule } from './home/home.module';
 import {
   FooterComponent,
   HeaderComponent,
+  ChatComponent,
+  PrivateChatComponent,
   SharedModule
 } from './shared';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,7 +17,7 @@ import { AdminModule } from './admin/admin.module';
 import { AdminRoutingModule } from './admin/admin-routing.module';
 
 @NgModule({
-  declarations: [AppComponent, FooterComponent, HeaderComponent],
+  declarations: [AppComponent, FooterComponent, HeaderComponent, ChatComponent, PrivateChatComponent],
   imports: [
     BrowserModule,
     CoreModule,

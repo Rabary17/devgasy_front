@@ -1,0 +1,9 @@
+{{User.username}}
+  <form [formGroup]="msgForm">
+      <fieldset class="form-group">
+          <fieldset class="form-group">
+          <input type="text" class="form-control" formControlName="message" placeholder="message ..."/>
+          <button type="button" (click)="envoyer(User.id)" [disabled]="!msgForm.valid">Envoyer</button>
+          </fieldset>
+      </fieldset>
+  </form>

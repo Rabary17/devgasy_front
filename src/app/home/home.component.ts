@@ -32,9 +32,6 @@ export class HomeComponent implements OnInit {
     this.searchForm = this.fb.group({
       keyword: '',
     });
-    this.msgForm = this.fb.group({
-      message: '',
-    });
   }
 
   searchOn = false;
@@ -68,11 +65,6 @@ export class HomeComponent implements OnInit {
       }
     );
 
-    this.getAllConnectedUser().subscribe(res => {
-      this.allConnectedUser = res;
-      console.log(res);
-    });
-
     this.userService.currentUser.subscribe(
       (userData) => {
         this.currentUser = userData;
@@ -87,13 +79,6 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  showConnected() {
-    this.getAllConnectedUser().subscribe(res => {
-      this.allConnectedUser = res;
-      console.log(res);
-    });
-    this.show = !this.show;
-  }
 
   search() {
     console.log(this.searchForm.value.keyword);
@@ -124,13 +109,4 @@ export class HomeComponent implements OnInit {
     this.searchOn = false;
   }
 
-  getAllConnectedUser() {
-    return this.userService.getConnectedUser();
-  }
-
-  send() {
-    this.msg = 'Hello Word for this socket.io tech';
-    this._chatService.sendMessage(this.msg);
-    console.log('message sent');
-  }
 }
