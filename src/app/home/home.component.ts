@@ -18,6 +18,8 @@ export class HomeComponent implements OnInit {
   allConnectedUser: [User];
   initMsg: string;
   searchForm: FormGroup;
+  msgForm: FormGroup;
+  show = false;
 
   constructor(
     private router: Router,
@@ -29,6 +31,9 @@ export class HomeComponent implements OnInit {
   ) {
     this.searchForm = this.fb.group({
       keyword: '',
+    });
+    this.msgForm = this.fb.group({
+      message: '',
     });
   }
 
@@ -80,6 +85,14 @@ export class HomeComponent implements OnInit {
       this.tags = tags;
       this.tagsLoaded = true;
     });
+  }
+
+  showConnected() {
+    this.getAllConnectedUser().subscribe(res => {
+      this.allConnectedUser = res;
+      console.log(res);
+    });
+    this.show = !this.show;
   }
 
   search() {

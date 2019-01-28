@@ -90,15 +90,27 @@
   </div>
 </div>
 
-<div class="container page">
+<div class="container-fluid">
   <div class="row">
-      <div class="col-md-push-8 "></div>
-    <div class="col-md-pull-4">
-        <ul>
+      <div class="col-xs-8 col-md-pull-10">
+      </div>
+
+    <div class="col-xs-4 col-md-push-2" style="position: fixed;bottom: 0;right: 0;width: 15%;">
+      <button type="button" (click)="showConnected()"><i class="fas fa-comments"></i> Coin des connéctés</button>
+        <ul *ngIf="show">
           <li *ngFor="let user of allConnectedUser">
             {{user.username}}
           </li>
+          <form [formGroup]="msgForm">
+              <fieldset class="form-group">
+                  <fieldset class="form-group">
+                    <input type="text" class="form-control" formControlName="message" placeholder="message ..."/>
+                    <button type="button">Envoyer</button>
+                  </fieldset>
+              </fieldset>
+          </form>
         </ul>
     </div>
+
   </div>
 </div>
