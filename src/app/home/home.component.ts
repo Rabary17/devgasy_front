@@ -5,6 +5,7 @@ import { ArticleListConfig, TagsService, UserService } from '../core';
 import { User} from '../core/models/user.model';
 import { ApiService } from '../core/services/api.service';
 import { Article } from '../core/models/article.model';
+import { ChatService } from '../core/services/chat.service';
 
 @Component({
   selector: 'app-home-page',
@@ -13,12 +14,15 @@ import { Article } from '../core/models/article.model';
 })
 export class HomeComponent implements OnInit {
   article: Array<Article>;
+  msg: string;
+  initMsg: string;
   searchForm: FormGroup;
   constructor(
     private router: Router,
     private fb: FormBuilder,
     private tagsService: TagsService,
     private userService: UserService,
+    private _chatService: ChatService,
     private http: ApiService
   ) {
     this.searchForm = this.fb.group({
@@ -98,5 +102,11 @@ export class HomeComponent implements OnInit {
     // Otherwise, set the list object
     this.listConfig = {type: type, filters: filters};
     this.searchOn = false;
+  }
+
+  send() {
+    this.msg = 'Hello Word for this socket.io tech';
+    this._chatService.sendMessage(this.msg);
+    console.log('message sent');
   }
 }

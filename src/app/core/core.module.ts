@@ -16,6 +16,7 @@ import {
   UserService,
 
 } from './services';
+import { ChatService } from './services/chat.service';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import {
     TagsService,
     UserService,
     ResponsesService,
-    SearchService
+    SearchService,
+    ChatService
   ],
   declarations: []
 })
