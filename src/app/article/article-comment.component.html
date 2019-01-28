@@ -12,7 +12,6 @@
           <a class="comment-author" [routerLink]="['/profile', comment.author.username]">
             {{ comment.author.username }}
           </a>
-        <hr>
           <span class="date-posted">
             {{ comment.createdAt | date: 'longDate' }}
           </span>
