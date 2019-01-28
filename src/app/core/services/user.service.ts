@@ -67,6 +67,16 @@ export class UserService {
     ));
   }
 
+
+  disconnect(userId): Observable<any> {
+    return this.apiService.post('/user/disconnect', {id: userId})
+      .pipe(map(
+      data => {
+       console.log(data);
+      }
+    ));
+  }
+
   getCurrentUser(): User {
     return this.currentUserSubject.value;
   }
@@ -76,6 +86,15 @@ export class UserService {
     .pipe(map(
     data => {
       return data;
+    }
+  ));
+  }
+
+  getConnectedUser(): Observable<[User]> {
+    return this.apiService.get('/allConnectedUser')
+    .pipe(map(
+    data => {
+      return data.user;
     }
   ));
   }

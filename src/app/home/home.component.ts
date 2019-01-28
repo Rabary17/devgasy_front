@@ -15,8 +15,10 @@ import { ChatService } from '../core/services/chat.service';
 export class HomeComponent implements OnInit {
   article: Array<Article>;
   msg: string;
+  allConnectedUser: [User];
   initMsg: string;
   searchForm: FormGroup;
+
   constructor(
     private router: Router,
     private fb: FormBuilder,
@@ -61,6 +63,11 @@ export class HomeComponent implements OnInit {
       }
     );
 
+    this.getAllConnectedUser().subscribe(res => {
+      this.allConnectedUser = res;
+      console.log(res);
+    });
+
     this.userService.currentUser.subscribe(
       (userData) => {
         this.currentUser = userData;
@@ -102,6 +109,10 @@ export class HomeComponent implements OnInit {
     // Otherwise, set the list object
     this.listConfig = {type: type, filters: filters};
     this.searchOn = false;
+  }
+
+  getAllConnectedUser() {
+    return this.userService.getConnectedUser();
   }
 
   send() {

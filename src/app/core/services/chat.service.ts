@@ -21,6 +21,11 @@ export class ChatService {
         this.socket.emit('message', msg);
     }
 
+    disconnect(msg: string) {
+        console.log('disconnect');
+        this.socket.emit('disconnect', msg);
+    }
+
     // getMessage() {
     //     return this.socket
     //         .fromEvent('message')
