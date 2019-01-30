@@ -6,6 +6,7 @@ import { ApiService } from '../../core/services/api.service';
 import { UserService } from '../../core/services/user.service';
 import { MessageService } from '../../core/services/message.service';
 import * as io from 'socket.io-client';
+import {WebsocketService } from '../../core/services/websocket.service';
 
 @Component({
   selector: 'app-private-chat',
@@ -22,10 +23,11 @@ export class PrivateChatComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private _chatService: ChatService,
     private http: ApiService,
     private userService: UserService,
     private messageService: MessageService,
+    private websocketService: WebsocketService,
+    private chatService: ChatService
   ) {
     this.msgForm = this.fb.group({
       message: ['', Validators.required],
@@ -40,9 +42,11 @@ export class PrivateChatComponent implements OnInit {
     const params = {'idEnvoyeur': this.myid.id,
                     'idReceveur': destinataire,
                     'message': this.msgForm.value.message};
+                    console.log('nouvelle émission de données pour' + destinataire);
 
-    return this.messageService.new(params).subscribe(res => {
-      console.log(res);
-    });
+    return this.chatService.sendMsg(params);
+    // return this.messageService.new(params).subscribe(res => {
+    //   console.log(res);
+    // });
   }
 }

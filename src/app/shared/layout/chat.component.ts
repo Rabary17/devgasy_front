@@ -54,7 +54,7 @@ export class ChatComponent implements OnInit  {
 
       send() {
         this.msg = 'Hello Word for this socket.io tech';
-        this._chatService.sendMessage(this.msg);
+        this._chatService.sendMsg(this.msg);
         console.log('message sent');
       }
 

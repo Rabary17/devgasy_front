@@ -13,11 +13,12 @@ import {
   JwtService,
   ProfilesService,
   TagsService,
-  UserService
+  UserService,
 
 } from './services';
 import { ChatService } from './services/chat.service';
 import { MessageService } from './services/message.service';
+import { WebsocketService } from './services/websocket.service';
 
 @NgModule({
   imports: [
@@ -36,7 +37,8 @@ import { MessageService } from './services/message.service';
     UserService,
     ResponsesService,
     SearchService,
-    ChatService
+    ChatService,
+    WebsocketService
   ],
   declarations: []
 })

@@ -69,6 +69,9 @@ export class AuthComponent implements OnInit {
         this.socket.on('listeConnectedUser', function(res) {
           console.log('listeConnectedUser' + JSON.stringify(res));
         });
+        this.socket.on('privateMessage', function(msg) {
+          alert(msg.message);
+        });
       },
       err => {
         this.errors = err;
