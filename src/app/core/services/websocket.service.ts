@@ -33,7 +33,7 @@ export class WebsocketService {
     // socket server whenever the `next()` method is called.
     const observer = {
         next: (data: Object) => {
-            this.socket.emit('message', JSON.stringify(data));
+            this.socket.emit('message', data);
         },
     };
 
