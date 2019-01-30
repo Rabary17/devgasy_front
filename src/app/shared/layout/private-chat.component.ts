@@ -4,6 +4,8 @@ import { ChatService } from '../../core/services/chat.service';
 import { User} from '../../core/models/user.model';
 import { ApiService } from '../../core/services/api.service';
 import { UserService } from '../../core/services/user.service';
+import { MessageService } from '../../core/services/message.service';
+import * as io from 'socket.io-client';
 
 @Component({
   selector: 'app-private-chat',
@@ -16,13 +18,14 @@ export class PrivateChatComponent implements OnInit {
   searchForm: FormGroup;
   msgForm: FormGroup;
   show = false;
-  me: User;
+  myid: User;
 
   constructor(
     private fb: FormBuilder,
     private _chatService: ChatService,
     private http: ApiService,
     private userService: UserService,
+    private messageService: MessageService,
   ) {
     this.msgForm = this.fb.group({
       message: ['', Validators.required],
@@ -30,10 +33,16 @@ export class PrivateChatComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.me = this.userService.getCurrentUser();
   }
 
   envoyer(destinataire) {
-    console.log(this.msgForm.value.message + 'à envoyer à' + destinataire);
+    this.myid = this.userService.getCurrentUser();
+    const params = {'idEnvoyeur': this.myid.id,
+                    'idReceveur': destinataire,
+                    'message': this.msgForm.value.message};
+
+    return this.messageService.new(params).subscribe(res => {
+      console.log(res);
+    });
   }
 }

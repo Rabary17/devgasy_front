@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import * as io from 'socket.io-client';
 import { Errors, UserService, User } from '../core';
 
 @Component({
@@ -19,7 +19,7 @@ export class AuthComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private userService: UserService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
   ) {
     // use FormBuilder to create a form group
     this.authForm = this.fb.group({
@@ -27,6 +27,8 @@ export class AuthComponent implements OnInit {
       'password': ['', Validators.required]
     });
   }
+
+  private socket = io('http://localhost:3000');
 
   ngOnInit() {
     this.route.url.subscribe(data => {
@@ -51,9 +53,23 @@ export class AuthComponent implements OnInit {
     .attemptAuth(this.authType, credentials)
     .subscribe(
       data => {
-        console.log(data);
+        console.log(data['user'].id);
         this.router.navigateByUrl('/');
-      } ,
+        // envoi notif coté serveur que l'user est connécté
+        this.socket.emit('userConnected', {user: data['user'].id, username: data['user'].username});
+        // message de bienvenue à l'utilisateur connécté
+        this.socket.on('welcomeMessage', function(msg) {
+          alert(msg);
+        });
+        // notification si nouvelle utilisateur connécté
+        this.socket.on('notifUserConnected', function(res) {
+          alert(res.message);
+        });
+        // mise à jour liste des user connécté
+        this.socket.on('listeConnectedUser', function(res) {
+          console.log('listeConnectedUser' + JSON.stringify(res));
+        });
+      },
       err => {
         this.errors = err;
         this.isSubmitting = false;

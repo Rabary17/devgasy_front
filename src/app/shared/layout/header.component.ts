@@ -3,12 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { User, UserService } from '../../core';
 import { Router } from '@angular/router';
 import { ChatService } from '../../core/services/chat.service';
-
+import * as io from 'socket.io-client';
 @Component({
   selector: 'app-layout-header',
   templateUrl: './header.component.html'
 })
 export class HeaderComponent implements OnInit {
+  private socket = io.connect('http://localhost:3000');
   constructor(
     private userService: UserService,
     private router: Router,
@@ -37,6 +38,7 @@ export class HeaderComponent implements OnInit {
   }
 
   seDeconnecter() {
+    this.socket.emit('manual-disconnection', this.socket.id);
     // console.log('this.currentUser.id' + this.currentUser.id);
     this.userService.disconnect(this.currentUser.id).subscribe(res => {
       console.log(res);

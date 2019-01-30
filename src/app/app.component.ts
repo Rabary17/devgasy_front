@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import * as io from 'socket.io-client';
 import { UserService } from './core';
 
 @Component({
@@ -8,7 +8,7 @@ import { UserService } from './core';
 })
 export class AppComponent implements OnInit {
   constructor (
-    private userService: UserService
+    private userService: UserService,
   ) {}
 
   ngOnInit() {

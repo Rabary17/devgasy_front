@@ -4,7 +4,7 @@ import { User} from '../../core/models/user.model';
 import { ApiService } from '../../core/services/api.service';
 import { UserService } from '../../core/services/user.service';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
-
+import * as io from 'socket.io-client';
 
 @Component({
   selector: 'app-chat-component',
@@ -17,6 +17,7 @@ export class ChatComponent implements OnInit  {
     msgForm: FormGroup;
     show = false;
     showUser = '';
+    private socket = io.connect('http://localhost:3000');
 
     constructor(
         private fb: FormBuilder,
@@ -46,6 +47,9 @@ export class ChatComponent implements OnInit  {
 
       getAllConnectedUser() {
         return this.userService.getConnectedUser();
+        // this.socket.on('listeConnectedUser', function(res) {
+        //   console.log(res);
+        // });
       }
 
       send() {
