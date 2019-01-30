@@ -38,7 +38,7 @@ export class HeaderComponent implements OnInit {
   }
 
   seDeconnecter() {
-    this.socket.emit('manual-disconnection', this.socket.id);
+    this.socket.emit('disconnect', this.socket.id);
     // console.log('this.currentUser.id' + this.currentUser.id);
     this.userService.disconnect(this.currentUser.id).subscribe(res => {
       console.log(res);
