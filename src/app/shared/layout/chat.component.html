@@ -3,11 +3,10 @@
         <div class="row">
             <div class="col-xs-8 col-md-pull-10">
             </div>
-        
             <div class="col-xs-4 col-md-push-2" style="position: fixed;bottom: 0;right: 0;width: 80%;">
             <button type="button" (click)="showConnected()"><i class="fas fa-comments"></i> Coin des connéctés</button>
                 <ul *ngIf="show">
-                    <li *ngFor="let user of allConnectedUser" (click)="talkTo(user)">
+                    <li *ngFor="let user of allConnectedUser[0]" (click)="talkTo(user)">
                         {{user.username}}
                         <app-private-chat [User]="user" [hidden]="showUser !== user.id"></app-private-chat>
                     </li>

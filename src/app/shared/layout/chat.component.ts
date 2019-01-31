@@ -12,7 +12,7 @@ import * as io from 'socket.io-client';
 })
 export class ChatComponent implements OnInit  {
     msg: string;
-    allConnectedUser: [User];
+    allConnectedUser: Array<any>;
     searchForm: FormGroup;
     msgForm: FormGroup;
     show = false;
@@ -31,25 +31,30 @@ export class ChatComponent implements OnInit  {
       }
 
       ngOnInit() {
-        this.getAllConnectedUser().subscribe(res => {
-            this.allConnectedUser = res;
-            console.log(res);
-          });
+        // this.getAllConnectedUser().subscribe(res => {
+        //     this.allConnectedUser = res;
+        //     console.log(res);
+        //   });
+        // this.getAllConnectedUser();
     }
 
     showConnected() {
-        this.getAllConnectedUser().subscribe(res => {
-          this.allConnectedUser = res;
-          console.log(res);
-        });
+      this.getAllConnectedUser();
+        // this.getAllConnectedUser().subscribe(res => {
+        //   this.allConnectedUser = res;
+        //   console.log(res);
+        // });
         this.show = !this.show;
       }
 
       getAllConnectedUser() {
-        return this.userService.getConnectedUser();
-        // this.socket.on('listeConnectedUser', function(res) {
-        //   console.log(res);
-        // });
+        const msg = 'getAllUserConnected';
+        this._chatService.sendMsg(msg);
+        const tab = [];
+        this.socket.on('listeConnectedUser', function(res) {
+          tab.push(res);
+        });
+        this.allConnectedUser = tab;
       }
 
       send() {
