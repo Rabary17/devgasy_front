@@ -9,7 +9,12 @@ import * as io from 'socket.io-client';
   templateUrl: './header.component.html'
 })
 export class HeaderComponent implements OnInit {
-  private socket = io.connect('http://localhost:3000');
+  private socket = io.connect('http://localhost:3000', {
+    reconnection: true,
+    reconnectionDelay: 1000,
+    reconnectionDelayMax : 5000,
+    reconnectionAttempts: Infinity
+  });
   constructor(
     private userService: UserService,
     private router: Router,
@@ -38,7 +43,10 @@ export class HeaderComponent implements OnInit {
   }
 
   seDeconnecter() {
-    this.socket.emit('disconnect', this.socket.id);
+    const msg = {'message': 'disconnect',
+                 'idUser': this.currentUser.id
+                };
+    this.chatService.sendMsg(msg);
     // console.log('this.currentUser.id' + this.currentUser.id);
     this.userService.disconnect(this.currentUser.id).subscribe(res => {
       console.log(res);

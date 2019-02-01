@@ -41,7 +41,8 @@ export class PrivateChatComponent implements OnInit {
     this.myid = this.userService.getCurrentUser();
     const params = {'idEnvoyeur': this.myid.id,
                     'idReceveur': destinataire,
-                    'message': this.msgForm.value.message};
+                    'message': this.msgForm.value.message,
+                    'tag': 'mp'};
                     console.log('nouvelle émission de données pour' + destinataire);
 
     return this.chatService.sendMsg(params);

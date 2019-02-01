@@ -1,16 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { ChatService } from '../../core/services/chat.service';
 import { User} from '../../core/models/user.model';
 import { ApiService } from '../../core/services/api.service';
 import { UserService } from '../../core/services/user.service';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import * as io from 'socket.io-client';
-
 @Component({
   selector: 'app-chat-component',
   templateUrl: './chat.component.html'
 })
-export class ChatComponent implements OnInit  {
+export class ChatComponent implements OnInit   {
     msg: string;
     allConnectedUser: Array<any>;
     searchForm: FormGroup;
@@ -35,9 +34,7 @@ export class ChatComponent implements OnInit  {
         //     this.allConnectedUser = res;
         //     console.log(res);
         //   });
-        // this.getAllConnectedUser();
     }
-
     showConnected() {
       this.getAllConnectedUser();
         // this.getAllConnectedUser().subscribe(res => {
@@ -51,6 +48,7 @@ export class ChatComponent implements OnInit  {
         const msg = 'getAllUserConnected';
         this._chatService.sendMsg(msg);
         const tab = [];
+        const tabMaj = [];
         this.socket.on('listeConnectedUser', function(res) {
           tab.push(res);
         });
@@ -58,13 +56,11 @@ export class ChatComponent implements OnInit  {
       }
 
       send() {
-        this.msg = 'Hello Word for this socket.io tech';
         this._chatService.sendMsg(this.msg);
-        console.log('message sent');
       }
 
       talkTo(user) {
-        console.log(user.id);
+        console.log('id de cet utilisateur ' + user.id);
             this.showUser = user.id;
       }
 

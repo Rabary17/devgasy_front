@@ -65,10 +65,7 @@ export class AuthComponent implements OnInit {
         this.socket.on('notifUserConnected', function(res) {
           alert(res.message);
         });
-        // mise à jour liste des user connécté
-        this.socket.on('listeConnectedUser', function(res) {
-          console.log('listeConnectedUser' + JSON.stringify(res));
-        });
+        // Envoi / récéption message privées
         this.socket.on('privateMessage', function(msg) {
           alert(msg.message);
         });
