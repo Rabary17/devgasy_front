@@ -8,7 +8,7 @@
                 <ul *ngIf="show">
                     <li *ngFor="let user of allConnectedUser[0]" (click)="talkTo(user)">
                         {{user.username}}
-                        <app-private-chat [User]="user" [hidden]="showUser !== user.id"></app-private-chat>
+                        <app-private-chat [User]="user" [Messages]="allMessage" [hidden]="showUser !== user.id"></app-private-chat>
                     </li>
                 </ul>
             </div>

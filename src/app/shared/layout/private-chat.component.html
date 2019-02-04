@@ -2,6 +2,9 @@
   <form [formGroup]="msgForm">
       <fieldset class="form-group">
           <fieldset class="form-group">
+              <div *ngFor="let mess of Messages">
+                  <p>{{mess.body}}</p>
+              </div>
           <input type="text" class="form-control" formControlName="message" placeholder="message ..."/>
           <button type="button" (click)="envoyer(User.id)" [disabled]="!msgForm.valid">Envoyer</button>
           </fieldset>

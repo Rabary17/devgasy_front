@@ -7,6 +7,7 @@ import { UserService } from '../../core/services/user.service';
 import { MessageService } from '../../core/services/message.service';
 import * as io from 'socket.io-client';
 import {WebsocketService } from '../../core/services/websocket.service';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
 @Component({
   selector: 'app-private-chat',
@@ -15,6 +16,7 @@ import {WebsocketService } from '../../core/services/websocket.service';
 })
 export class PrivateChatComponent implements OnInit {
   @Input() User;
+  @Input() Messages;
   msg: string;
   searchForm: FormGroup;
   msgForm: FormGroup;

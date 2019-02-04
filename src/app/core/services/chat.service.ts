@@ -14,7 +14,6 @@ export class ChatService {
     this.messages = <Subject<any>>wsService
       .connect()
       .map((response: any): any => {
-        console.log('response' + response);
         return response;
       });
    }
@@ -23,6 +22,6 @@ export class ChatService {
   // messages back to our socket.io server
   sendMsg(msg) {
     this.messages.next(msg);
-    console.log(msg);
+    console.log('chat service message : ' + JSON.stringify(msg));
   }
 }
