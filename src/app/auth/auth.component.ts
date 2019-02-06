@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import * as io from 'socket.io-client';
 import { Errors, UserService, User } from '../core';
+import { ChatService } from '../core/services/chat.service';
 
 @Component({
   selector: 'app-auth-page',
@@ -20,6 +21,7 @@ export class AuthComponent implements OnInit {
     private router: Router,
     private userService: UserService,
     private fb: FormBuilder,
+    private chatService: ChatService
   ) {
     // use FormBuilder to create a form group
     this.authForm = this.fb.group({
@@ -56,20 +58,38 @@ export class AuthComponent implements OnInit {
         console.log(data['user'].id);
         this.router.navigateByUrl('/');
         // envoi notif coté serveur que l'user est connécté
-        this.socket.emit('userConnected', {user: data['user'].id, username: data['user'].username});
-        // message de bienvenue à l'utilisateur connécté
-        this.socket.on('welcomeMessage', function(msg) {
-          alert(msg);
+        const msg = { tag: 'userConnected',
+                      user: data['user'].id,
+                      username: data['user'].username
+                    };
+        this.chatService.sendMsg(msg);
+
+        // this.socket.emit('userConnected', {user: data['user'].id, username: data['user'].username});
+
+        this.chatService.messages.subscribe(mes => {
+          alert(mes);
+          if (mes.tag === 'mp') {
+            console.log('mp ' + JSON.stringify(mes));
+          }
+          if (mes.tag === 'getAllUserConnected') {
+            console.log('getAllUserConnected ' + JSON.stringify(mes));
+          }
+          if (mes.tag === 'notifUserConnected') {
+            console.log('notifUserConnected ' + JSON.stringify(mes));
+          }
+          if (mes.tag === 'welcomeMessage') {
+            console.log('getAllUserConnected ' + JSON.stringify(mes));
+          }
         });
-        // notification si nouvelle utilisateur connécté
-        this.socket.on('notifUserConnected', function(res) {
-          alert(res.message);
-        });
-        // Envoi / récéption message privées
-        this.socket.on('privateMessage', function(msg) {
-          alert(msg.message);
-          console.log('depuis auth component');
-        });
+
+
+        // this.socket.on('welcomeMessage', function(msg) {
+        //   alert(msg);
+        // });
+        // this.socket.on('notifUserConnected', function(res) {
+        //   alert(res.message);
+        // });
+
       },
       err => {
         this.errors = err;

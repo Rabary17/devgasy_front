@@ -9,17 +9,13 @@ import * as io from 'socket.io-client';
   templateUrl: './header.component.html'
 })
 export class HeaderComponent implements OnInit {
-  private socket = io.connect('http://localhost:3000', {
-    reconnection: true,
-    reconnectionDelay: 1000,
-    reconnectionDelayMax : 5000,
-    reconnectionAttempts: Infinity
-  });
+
   constructor(
     private userService: UserService,
     private router: Router,
     private chatService: ChatService
-  ) {}
+  ) {
+  }
 
   currentUser: User;
   ifAdmin = false;

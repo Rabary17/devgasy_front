@@ -1,5 +1,6 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { ChatService } from '../../core/services/chat.service';
+import { WebsocketService } from '../../core/services/websocket.service'
 import { User} from '../../core/models/user.model';
 import { ApiService } from '../../core/services/api.service';
 import { UserService } from '../../core/services/user.service';
@@ -26,6 +27,7 @@ export class ChatComponent implements OnInit   {
         private _chatService: ChatService,
         private http: ApiService,
         private userService: UserService,
+        private wsService: WebsocketService
       ) {
         this.msgForm = this.fb.group({
           message: '',
@@ -37,7 +39,11 @@ export class ChatComponent implements OnInit   {
         //     this.allConnectedUser = res;
         //     console.log(res);
         //   });
+        this.wsService.connect().map( res => {
+          alert(res);
+        });
     }
+
     showConnected() {
       this.getAllConnectedUser();
         // this.getAllConnectedUser().subscribe(res => {
