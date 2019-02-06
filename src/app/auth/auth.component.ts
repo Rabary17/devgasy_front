@@ -68,6 +68,7 @@ export class AuthComponent implements OnInit {
         // Envoi / récéption message privées
         this.socket.on('privateMessage', function(msg) {
           alert(msg.message);
+          console.log('depuis auth component');
         });
       },
       err => {

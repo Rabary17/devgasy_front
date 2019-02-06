@@ -37,6 +37,7 @@ export class PrivateChatComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
   envoyer(destinataire) {
