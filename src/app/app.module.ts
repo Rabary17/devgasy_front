@@ -11,6 +11,7 @@ import {
   PrivateChatComponent,
   SharedModule
 } from './shared';
+
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { AdminModule } from './admin/admin.module';

@@ -1,6 +1,6 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit, ElementRef, HostListener, Output;, EventEmitter } from '@angular/core';
 import { ChatService } from '../../core/services/chat.service';
-import { WebsocketService } from '../../core/services/websocket.service'
+import { WebsocketService } from '../../core/services/websocket.service';
 import { User} from '../../core/models/user.model';
 import { ApiService } from '../../core/services/api.service';
 import { UserService } from '../../core/services/user.service';
@@ -12,7 +12,9 @@ import { Observable } from 'rxjs';
   selector: 'app-chat-component',
   templateUrl: './chat.component.html'
 })
+
 export class ChatComponent implements OnInit   {
+
     allConnectedUser: Array<any>;
     allMessage: Array<any>;
     show = false;
@@ -21,11 +23,20 @@ export class ChatComponent implements OnInit   {
 
     private socket = io.connect('http://localhost:3000');
 
+    @HostListener('document: click', ['$event'])
+    public clickout(event) {
+      const clickedInside = this.eRef.nativeElement.contains(event.target);
+      if (!clickedInside) {
+          this.show = false;
+      }
+    }
+
     constructor(
         private _chatService: ChatService,
         private http: ApiService,
         private userService: UserService,
-        private wsService: WebsocketService
+        private wsService: WebsocketService,
+        private eRef: ElementRef
       ) {
         this.allMessage = [];
       }
@@ -64,8 +75,12 @@ export class ChatComponent implements OnInit   {
       return Object.assign(mes, {'date': date});
     }
 
-    showConnected() {
-      this.getAllConnectedUser();
+    hide() {
+      this.show = false;
+      console.log('click outside');
+    }
+
+    showConnectedUser() {
         // this.getAllConnectedUser().subscribe(res => {
         //   this.allConnectedUser = res;
         //   console.log(res);

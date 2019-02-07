@@ -8,6 +8,7 @@ import { ArticleListComponent, ArticleMetaComponent, ArticlePreviewComponent } f
 import { FavoriteButtonComponent, FollowButtonComponent } from './buttons';
 import { ListErrorsComponent } from './list-errors.component';
 import { ShowAuthedDirective } from './show-authed.directive';
+import { ClickOutsideDirective } from './click-outside.directive';
 import { ArticleResultComponent } from '../shared/article-helpers/article-result.component';
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import { ArticleResultComponent } from '../shared/article-helpers/article-result
     FollowButtonComponent,
     ListErrorsComponent,
     ArticleResultComponent,
-    ShowAuthedDirective
+    ShowAuthedDirective,
+    ClickOutsideDirective
   ],
   exports: [
     ArticleListComponent,
