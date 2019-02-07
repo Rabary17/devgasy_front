@@ -3,12 +3,18 @@
         <div class="row">
             <div class="col-xs-8 col-md-pull-10">
             </div>
-            <div class="col-xs-4 col-md-push-2" style="position: fixed;bottom: 0;right: 0;width: 80%;background-color:#eee">
-                <button type="button" (click)="showConnectedUser()">Discussion instantannée</button>
+            <div class="col-xs-4 col-md-push-2" style="position: fixed;bottom: 0;right: 0;width: 20%;bottom: 10%;">
+                <button 
+                    *appShowAuthed="true"
+                    type="button" 
+                    (click)="showConnectedUser()"
+                    style="width: 100%;border: none;height: 50px;background-color:#965097;color:#fff;">
+                    Discussion instantannée
+                </button>
                 <div (clickout)="console.log('ts')">
-                    <ul *ngIf="show">
+                    <ul *ngIf="show" style="background-color:#eee;">
                         <li *ngFor="let user of allConnectedUser" (click)="talkTo(user)">
-                            {{user.username}} 
+                            {{user.username}} <span *ngIf="user.id === currentUserId">(vous)</span>
                             <app-private-chat [User]="user" [Messages]="allMessage" [currentUserId]="currentUserId" [hidden]="showUser !== user.id"></app-private-chat>
                         </li>
                     </ul>

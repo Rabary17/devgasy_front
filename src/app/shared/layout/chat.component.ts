@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, HostListener, Output;, EventEmitter } from '@angular/core';
+import { Component, OnInit, ElementRef, HostListener, Output; EventEmitter, Input } from '@angular/core';
 import { ChatService } from '../../core/services/chat.service';
 import { WebsocketService } from '../../core/services/websocket.service';
 import { User} from '../../core/models/user.model';
@@ -42,6 +42,7 @@ export class ChatComponent implements OnInit   {
       }
 
       ngOnInit() {
+        this.currentUserId = this.userService.getCurrentUser().id;
         // this.getAllConnectedUser().subscribe(res => {
         //     this.allConnectedUser = res;
         //     console.log(res);
@@ -85,6 +86,7 @@ export class ChatComponent implements OnInit   {
         //   this.allConnectedUser = res;
         //   console.log(res);
         // });
+        this.currentUserId = this.userService.getCurrentUser().id;
         this.show = !this.show;
       }
 
@@ -99,7 +101,6 @@ export class ChatComponent implements OnInit   {
       }
 
       talkTo(user) {
-        this.currentUserId = this.userService.getCurrentUser().id;
         this.showUser = user.id;
       }
 }

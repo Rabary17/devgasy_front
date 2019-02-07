@@ -12,7 +12,7 @@
 
                   <div *ngIf="User.id === currentUserId">
                           <div *ngIf="mess.idEnvoyeur === User.id && mess.idReceveur === User.id ">
-                                  VOUS : {{mess.message}}
+                                {{mess.message}}
                           </div>
                   </div>
               </div>

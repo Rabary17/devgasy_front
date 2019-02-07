@@ -7,6 +7,7 @@ import { UserService } from './core';
   templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
+  currentUser = '';
   constructor (
     private userService: UserService,
   ) {}
