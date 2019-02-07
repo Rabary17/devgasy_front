@@ -3,7 +3,18 @@
       <fieldset class="form-group">
           <fieldset class="form-group">
               <div *ngFor="let mess of Messages">
-                  <p>{{mess.body}}</p>
+                  <div *ngIf="User.id !== currentUserId">
+                        <div *ngIf="mess.idEnvoyeur === User.id || mess.idReceveur === User.id ">
+                            <p *ngIf="mess.idEnvoyeur === currentUserId" class="btn-primary" style="text-align:right;">VOUS : {{mess.message}}</p> 
+                            <p *ngIf="mess.idEnvoyeur !== currentUserId">{{mess.nomEnvoyeur}} : {{mess.message}}</p> 
+                        </div>
+                  </div>
+
+                  <div *ngIf="User.id === currentUserId">
+                          <div *ngIf="mess.idEnvoyeur === User.id && mess.idReceveur === User.id ">
+                                  VOUS : {{mess.message}}
+                          </div>
+                  </div>
               </div>
           <input type="text" class="form-control" formControlName="message" placeholder="message ..."/>
           <button type="button" (click)="envoyer(User.id)" [disabled]="!msgForm.valid">Envoyer</button>

@@ -16,11 +16,12 @@ import {WebsocketService } from '../../core/services/websocket.service';
 export class PrivateChatComponent implements OnInit {
   @Input() User;
   @Input() Messages;
+  @Input() currentUserId;
   msg: string;
   searchForm: FormGroup;
   msgForm: FormGroup;
   show = false;
-  myid: User;
+  myid: String;
 
   constructor(
     private fb: FormBuilder,
@@ -38,18 +39,22 @@ export class PrivateChatComponent implements OnInit {
   ngOnInit() {
 
   }
-
+  addDate (mes) {
+    const date = new Date();
+    return Object.assign(mes, {'date': date});
+  }
   envoyer(destinataire) {
-    this.myid = this.userService.getCurrentUser();
-    const params = {'idEnvoyeur': this.myid.id,
+    this.myid = this.userService.getCurrentUser().id;
+    const params = {'idEnvoyeur': this.myid,
+                    'nomEnvoyeur': this.userService.getCurrentUser().username,
                     'idReceveur': destinataire,
                     'message': this.msgForm.value.message,
                     'tag': 'mp'};
-                    console.log('nouvelle émission de données pour' + destinataire);
+    console.log('message envoyé');
+    const msg = this.addDate(params);
+    // this.Messages.push(msg);
+    this.msgForm.reset();
 
-    return this.chatService.sendMsg(params);
-    // return this.messageService.new(params).subscribe(res => {
-    //   console.log(res);
-    // });
+    this.chatService.sendMsg(msg);
   }
 }
