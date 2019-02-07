@@ -39,8 +39,24 @@ export class ChatComponent implements OnInit   {
         //     this.allConnectedUser = res;
         //     console.log(res);
         //   });
-        this.wsService.connect().map( res => {
-          alert(res);
+        // this.wsService.connect().map( res => {
+        //   alert(res);
+        // });
+
+        this._chatService.messages.subscribe(mes => {
+          if (mes.tag === 'mp') {
+            console.log('mp ' + JSON.stringify(mes));
+          }
+          if (mes.tag === 'listUserConnected') {
+            this.allConnectedUser = mes.users;
+            console.log('allConnectedUser ' + JSON.stringify(this.allConnectedUser));
+          }
+          if (mes.tag === 'notifUserConnected') {
+            alert('notifUserConnected ' + JSON.stringify(mes));
+          }
+          if (mes.tag === 'welcomeMessage') {
+            alert('welcomeMessage ' + JSON.stringify(mes));
+          }
         });
     }
 

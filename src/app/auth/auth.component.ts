@@ -66,22 +66,6 @@ export class AuthComponent implements OnInit {
 
         // this.socket.emit('userConnected', {user: data['user'].id, username: data['user'].username});
 
-        this.chatService.messages.subscribe(mes => {
-          alert(mes);
-          if (mes.tag === 'mp') {
-            console.log('mp ' + JSON.stringify(mes));
-          }
-          if (mes.tag === 'getAllUserConnected') {
-            console.log('getAllUserConnected ' + JSON.stringify(mes));
-          }
-          if (mes.tag === 'notifUserConnected') {
-            console.log('notifUserConnected ' + JSON.stringify(mes));
-          }
-          if (mes.tag === 'welcomeMessage') {
-            console.log('getAllUserConnected ' + JSON.stringify(mes));
-          }
-        });
-
 
         // this.socket.on('welcomeMessage', function(msg) {
         //   alert(msg);
