@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, HostListener, Output; EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, ElementRef, HostListener, Output, EventEmitter, Input } from '@angular/core';
 import { ChatService } from '../../core/services/chat.service';
 import { WebsocketService } from '../../core/services/websocket.service';
 import { User} from '../../core/models/user.model';
