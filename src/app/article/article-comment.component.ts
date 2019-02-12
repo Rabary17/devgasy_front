@@ -77,6 +77,7 @@ export class ArticleCommentComponent implements OnInit, OnDestroy {
               this.comment.utile.filter(user => {
                 return user !== this.userId;
               });
+              console.log('user  ' + JSON.stringify(this.comment));
             }
           );
         } else if (!avoté) {
@@ -86,6 +87,7 @@ export class ArticleCommentComponent implements OnInit, OnDestroy {
               // si userId dedans
               this.comment.utile.push(this.userId);
               this.comment.utile.length = res.utile.length;
+              console.log(JSON.stringify(this.comment));
             }
           );
         }

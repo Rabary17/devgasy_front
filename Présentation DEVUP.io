@@ -50,10 +50,22 @@ Administration :
 Page résérvé à l'administration du site
 =======================================
 
-La liste de tous les utilisateurs
-La liste de tous les articles 
+La liste de tous les utilisateurs avec à chacun ses articles.
+La liste de tous les articles avec les users correpondants.
 La liste des évènements sur :
 	Qui a publié quoi,
 	Qui a répondu à un commentaire sur quoi,
 	Qui a commenté quoi?
+	Qui a monté en grade en quoi...
+
+
+
+A mettre en place :
+===================
+
+Chat system : pour faciliter la communication entre users. ( 50% )
+Rich text Editor : pour mettre en forme les articles, commentaires. ==> NgxEditor : sibiraj-s
+Facebook + google login : pour faciliter l'accès au site. ==> 
+
+
 
