@@ -11,12 +11,30 @@
 
   <div class="app-article-preview"
     [hidden]="!loading">
-    Chargement des articles...
+    <p>Chargement des articles...</p>
   </div>
 
   <div class="app-article-preview"
     [hidden]="loading || results.length">
-    Vous n'avez pas encore d'article.
+          <div style="padding: 10% 10%;background-color: #eee;">
+            <h2>Comment ça va matelot ?</h2>
+            <h3>Vous n'avez pas encore participé ?</h3>
+            <p><a class="nav-link"
+              routerLink="/editor/bonne-pratique"
+              routerLinkActive="active">
+              <i class="ion-compose"></i>&nbsp;
+              <i class="fa fa-lightbulb" aria-hidden="true"></i>
+              Participer
+            </a> à l'évolution de la communeauté vous aidera a devenir plus fort.</p>
+            <!-- <ul style="display: flex;list-style-type: none;padding:0;">
+                <li><img class="img-med" src="/src/assets/images/matelot.png" alt="matelot" /></li>
+                <li><img class="img-med" src="/src/assets/images/major.png" alt="major" /></li>
+                <li><img class="img-med" src="/src/assets/images/aspirant.png" alt="aspirant" /></li>
+                <li><img class="img-med" src="/src/assets/images/capitaine.png" alt="capitaine" /></li>
+                <li><img class="img-med" src="/src/assets/images/lieutnant.png" alt="lieutnant" /></li>
+                <li><img class="img-med" src="/src/assets/images/amiral.png" alt="amiral" /></li>
+            </ul> -->
+          </div>
   </div>
 
   <nav [hidden]="loading || totalPages.length <= 1">

@@ -29,8 +29,9 @@
         <span class="mod-options" [hidden]="!canModify">
           <i class="ion-trash-a" (click)="deleteClicked()"></i>
         </span>
-        <span class="mod-options">
-            <i class="fa fa-cog" aria-hidden="true" [ngClass]="{'purple': comment.tagAvotee === true}" (click)="wasUseful(comment)">{{comment.utile.length}} <span *ngIf="comment.utile.length === 0"></span></i>
+        <span class="mod-options" *appShowAuthed="true">
+            <i class="fa fa-thumbs-up" aria-hidden="true" [ngClass]="{'purple': comment.tagAvotee === true}" (click)="wasUseful(comment)"><span *ngIf="comment.utile.length === 0"></span></i> {{comment.utile.length}} 
+            <i class="fa fa-comment-alt" aria-hidden="true"><span *ngIf="comment.utile.length === 0"></span></i> {{comment.resp}}
         </span>
       </div>
 

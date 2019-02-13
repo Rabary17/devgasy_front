@@ -1,6 +1,6 @@
 <nav class="navbar navbar-light">
   <div class="container">
-    <a class="navbar-brand" routerLink="/" style="font-weight: bold;"><span style="color: #373a3c">DEV</span><span>SHIP</span></a>
+    <a class="navbar-brand" routerLink="/" style="font-weight: bold;"><span style="color: #373a3c">DEV</span><span>SHIP </span><i class="fa fa-code" ></i></a>
     <!-- Show this for logged out users -->
     <ul *appShowAuthed="false"
       class="nav navbar-nav pull-xs-right">
@@ -38,11 +38,20 @@
 
       <li class="nav-item">
         <a class="nav-link"
-          routerLink="/"
+          routerLink="/actus"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }">
           <i class="fa fa-columns" aria-hidden="true"></i>
           Actualité
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link"
+          routerLink="/"
+          routerLinkActive="active">
+          <i class="fa fa-home" aria-hidden="true"></i>
+          Accueil
         </a>
       </li>
 
@@ -63,16 +72,6 @@
           <i class="ion-compose"></i>&nbsp;
           <i class="fa fa-question-circle" aria-hidden="true"></i>
           Sujet
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link"
-          routerLink="/settings"
-          routerLinkActive="active">
-          <i class="ion-gear-a"></i>&nbsp;
-          <i class="fa fa-user-cog" aria-hidden="true"></i>
-          Configuration
         </a>
       </li>
 

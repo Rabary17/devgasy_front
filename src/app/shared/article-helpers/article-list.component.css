@@ -1,3 +1,11 @@
 .page-link {
   cursor: pointer;
 }
+
+.img-med{
+  height: 100px;
+}
+
+ul li {
+  padding: 0 10px;
+}
