@@ -8,11 +8,13 @@
           <img [src]="profile.image" class="user-img" />
           <h4>{{ profile.username }}</h4>
           <p>{{ profile.bio }}</p>
+          
           <app-follow-button
             [hidden]="isUser"
             [profile]="profile"
             (toggle)="onToggleFollowing($event)">
           </app-follow-button>
+          <img src="../../assets/images/aspirant.png" alt="matelot" style="width: 150px;position: absolute;right: 20px;top: -10px;"/>
            <a [routerLink]="['/settings']"
               [hidden]="!isUser"
               class="btn btn-sm btn-outline-secondary action-btn">

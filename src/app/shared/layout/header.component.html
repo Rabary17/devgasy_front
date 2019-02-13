@@ -1,14 +1,13 @@
 <nav class="navbar navbar-light">
   <div class="container">
-    <a class="navbar-brand" routerLink="/">DevupMada</a>
-
+    <a class="navbar-brand" routerLink="/" style="font-weight: bold;"><span style="color: #373a3c">DEV</span><span>SHIP</span></a>
     <!-- Show this for logged out users -->
     <ul *appShowAuthed="false"
       class="nav navbar-nav pull-xs-right">
-
       <li class="nav-item">
         <a class="nav-link"
           routerLink="/">
+          <i class="fa fa-home" aria-hidden="true"></i>
           Accueil
         </a>
       </li>
@@ -17,6 +16,7 @@
         <a class="nav-link"
           routerLink="/login"
           routerLinkActive="active">
+          <i class="fa fa-user-alt" aria-hidden="true"></i>
           Se connecter
         </a>
       </li>
@@ -25,6 +25,7 @@
         <a class="nav-link"
           routerLink="/register"
           routerLinkActive="active">
+          <i class="fa fa-sign-in-alt" aria-hidden="true"></i>
           S'enregistrer
         </a>
       </li>
@@ -40,7 +41,8 @@
           routerLink="/"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }">
-          Accueil
+          <i class="fa fa-columns" aria-hidden="true"></i>
+          Actualité
         </a>
       </li>
 
@@ -48,7 +50,9 @@
         <a class="nav-link"
           routerLink="/editor/bonne-pratique"
           routerLinkActive="active">
-          <i class="ion-compose"></i>&nbsp;Bonne pratique
+          <i class="ion-compose"></i>&nbsp;
+          <i class="fa fa-lightbulb" aria-hidden="true"></i>
+          Bonne pratique
         </a>
       </li>
 
@@ -56,7 +60,9 @@
         <a class="nav-link"
           routerLink="/editor/sujet"
           routerLinkActive="active">
-          <i class="ion-compose"></i>&nbsp;Sujet
+          <i class="ion-compose"></i>&nbsp;
+          <i class="fa fa-question-circle" aria-hidden="true"></i>
+          Sujet
         </a>
       </li>
 
@@ -64,7 +70,9 @@
         <a class="nav-link"
           routerLink="/settings"
           routerLinkActive="active">
-          <i class="ion-gear-a"></i>&nbsp;Configuration
+          <i class="ion-gear-a"></i>&nbsp;
+          <i class="fa fa-user-cog" aria-hidden="true"></i>
+          Configuration
         </a>
       </li>
 
@@ -81,7 +89,9 @@
         <a class="nav-link"
           routerLink="/admin"
           routerLinkActive="active">
-          <i class="ion-gear-a"></i>&nbsp;Administration
+          <i class="ion-gear-a"></i>&nbsp;
+          <i class="fa fa-cog" aria-hidden="true"></i>
+          Administration
         </a>
       </li>
 
@@ -89,7 +99,9 @@
           <a class="nav-link"
             routerLink="/admin"
             routerLinkActive="active">
-            <i class="ion-gear-a"></i>&nbsp;Se déconnecter
+            <i class="ion-gear-a"></i>&nbsp;
+            <i class="fa fa-power-off" aria-hidden="true"></i>
+            Se déconnecter
           </a>
       </li>
 

@@ -63,9 +63,34 @@ La liste des évènements sur :
 A mettre en place :
 ===================
 
-Chat system : pour faciliter la communication entre users. ( 50% )
-Rich text Editor : pour mettre en forme les articles, commentaires. ==> NgxEditor : sibiraj-s
-Facebook + google login : pour faciliter l'accès au site. ==> 
+Chat system : pour faciliter la communication entre users.
+Rich text Editor : pour mettre en forme les articles, commentaires et les réponses. ==> NgxEditor : sibiraj-s
+Facebook + google login : pour faciliter l'accès au site.
 
+***************
+Fil d'actualité à la page d'accueil
+-----------------------------------
 
+Pour informer tous les utilisateurs de tous les publications récentes
 
+Push notification à chaque utilisateurs dès que l'un des ces évènements se produit :
+
+Première connexion
+Connexion
+Déconnexion
+publications : Bonne pratique
+               Sujet
+commentaire
+réponse au commentaire
+like et dislike
+***************
+
+Design Thème : DevSHIP (le bateau des devs)
+-------------------------------------------
+Pirate ?? Mais pas trop!!! Garder la simplicité 
+
+Charte graphique
+Icone
+Graphisme
+Ambiance
+Font
